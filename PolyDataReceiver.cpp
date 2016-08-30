@@ -40,7 +40,12 @@
 #include <vtkFloatArray.h>
 #include <vtkDataSetAttributes.h>
 #include <vtkFieldData.h>
-
+#include <vtkCleanPolyData.h>
+#include <vtkDelaunay3D.h>
+#include <vtkDataSetMapper.h>
+#include <vtkSurfaceReconstructionFilter.h>
+#include <vtkReverseSense.h>
+#include <vtkContourFilter.h>
 
 #include <vtkSmartPointer.h>
 #include <vtkPolyDataMapper.h>
@@ -49,6 +54,7 @@
 #include <vtkActor.h>
 #include <vtkRenderWindow.h>
 #include <vtkRenderWindowInteractor.h>
+#include <vtkOpenGL.h>
 #include <vtkRenderer.h>
 #include <vtkCamera.h>
 #include <vtkInteractorStyle.h>
@@ -303,9 +309,6 @@ bool ReceivePolyDataStream(igtl::Socket * socket, igtl::MessageHeader::Pointer h
   }
   
   polyData->Modified();
-  vertexFilter->SetInputData(polyData);
-  vertexFilter->Update();
-  polyData->ShallowCopy(vertexFilter->GetOutput());
   return true;
   
 }
