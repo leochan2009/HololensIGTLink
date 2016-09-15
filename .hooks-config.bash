@@ -3,4 +3,4 @@
 
 hooks_chain_pre_commit="Utilities/Scripts/pre-commit"
 hooks_chain_commit_msg="Utilities/Scripts/commit-msg"
-hooks_chain_prepare_commit_msg="Utilities/Scripts/p"
+hooks_chain_prepare_commit_msg="Utilities/Scripts/prepare-commit-msg"
